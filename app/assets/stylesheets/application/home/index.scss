@@ -62,11 +62,13 @@ body.home {
 
         input[type=submit] {
           display: inline-block;
+          margin-left: -5px;
           width: 20%;
         }
 
         input {
           border-radius: 0;
+          box-shadow: none;
           padding: 12px;
         }
       }
