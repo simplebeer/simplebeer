@@ -1,11 +1,11 @@
 @import "imports";
 
-body.home {
+body.home.index {
   .hero {
     background: $black image-url("hero.png") no-repeat left top;
     background-size: cover;
     min-height: 500px;
-    padding: 75px;
+    padding: 75px 0;
     text-align: center;
 
     .container {
@@ -17,6 +17,10 @@ body.home {
         @include omega;
 
         font-size: 50px;
+
+        @include media($mobile) {
+          font-size: 30px;
+        }
 
         span.problem {
           text-decoration: underline;
@@ -45,6 +49,11 @@ body.home {
       @include span-columns(8);
       @include omega;
 
+      @include media($mobile) {
+        @include shift(0);
+        @include span-columns(4);
+      }
+
       margin-bottom: 75px;
       margin-top: 50px;
       text-align: center;
@@ -58,12 +67,28 @@ body.home {
           display: inline-block;
           margin: 0;
           width: 70%;
+
+          @include media($mobile) {
+            width: 60%;
+          }
+
+          @include media($tablet) {
+            width: 60%;
+          }
         }
 
         input[type=submit] {
           display: inline-block;
           margin-left: -5px;
           width: 20%;
+
+          @include media($mobile) {
+            width: 30%;
+          }
+
+          @include media($tablet) {
+            width: 30%;
+          }
         }
 
         input {
@@ -79,6 +104,11 @@ body.home {
       @include shift(2);
       @include span-columns(8);
       @include omega;
+
+      @include media($mobile) {
+        @include shift(0);
+        @include span-columns(4);
+      }
 
       ul {
         @include span-columns(6);

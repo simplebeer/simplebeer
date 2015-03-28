@@ -8,7 +8,17 @@ header {
     @include outer-container;
 
     .logo {
-      @include span-columns(4);
+      max-width: 345px;
+
+      @include media($mobile) {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      @include media($tablet) {
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
   }
 }
