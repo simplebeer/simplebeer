@@ -1,5 +1,17 @@
 @import "imports";
 
-body.home {
+body.home .sign-up {
+  button {
+    @include button;
+    min-height: 60px;
+  }
 
+  .monthly-price {
+    font-size: 20px;
+  }
+
+  .first-month {
+    display: block;
+    font-size: 12px;
+  }
 }

@@ -1,18 +1,49 @@
-<div class="price">First Month: <span>$100</span></div>
+<h1 class="problem">Brewing beer is hard</h1>
 
-<%= radio_button_tag(:kit, :yes, selected: true) %>
-<%= label_tag(:kit_yes, "I'm a noob. I need the starter kit.") %>
-<%= radio_button_tag(:kit, :no) %>
-<%= label_tag(:kit_no, "I've done this before. I just need ingredients.") %>
+<p class="solve-problem">
+  Simple Beer solves this problem by providing you with
+  everything needed to brew a perfect gallon of beer each month.
+</p>
+
+<p class="noob">
+  If it’s your first time brewing, we recommend buying our
+  <a href="#starter-kit">Starter Kit</a> with the shipment
+  for your first brew.
+</p>
+
+<%= form_tag brews_path, method: :get, class: "sign-up" do %>
+  <ul>
+    <li>
+      <%= radio_button_tag(:kit, :yes, selected: true) %>
+      <%= label_tag(:kit_yes, "I’m new to this. I need the starter kit!") %>
+    </li>
+    <li>
+      <%= radio_button_tag(:kit, :no) %>
+      <%= label_tag(:kit_no, "I’ve done this before. I just need ingredients.") %>
+    </li>
+  </ul>
+
+  <button>
+    <span class="monthly-price">
+      Sign up for <strong>$25 / month</strong>
+    </span>
+    <small class="first-month">
+      First Month: <span>$100</span> with starter kit
+    </small>
+  </button>
+<% end %>
+
+<%= render partial: "monthly_kits" %>
+<%= render partial: "starter_kit" %>
 
 <% content_for :scripts do %>
   <script>
     $(document).ready(function () {
       $('input:radio[name="kit"]').change(function () {
         if ($(this).val() === 'yes') {
-          $('.price > span').text('$100');
+          $('.first-month').show();
         } else {
-          $('.price > span').text('$25');
+          $('.first-month').hide();
         }
       });
     });

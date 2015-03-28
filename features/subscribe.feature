@@ -14,4 +14,4 @@ Feature: Signing up for a new subscription
   Scenario: I already have the equipment I need to brew a gallon of beer
     Given I have visited the subscribe page
     When I have selected that I don't need the starter kit
-    Then the pricing for the first month should display "$25"
+    Then the pricing for the first month should not be displayed
