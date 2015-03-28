@@ -1,5 +1,13 @@
 @import "imports";
 
 body.brews {
+  @include outer-container;
 
+  .available-brews {
+    @include span-columns(8);
+  }
+
+  .brew-queue {
+    @include span-columns(4);
+  }
 }
