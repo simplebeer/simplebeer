@@ -1,0 +1,20 @@
+<div class="price">First Month: <span>$100</span></div>
+
+<%= radio_button_tag(:kit, :yes, selected: true) %>
+<%= label_tag(:kit_yes, "I'm a noob. I need the starter kit.") %>
+<%= radio_button_tag(:kit, :no) %>
+<%= label_tag(:kit_no, "I've done this before. I just need ingredients.") %>
+
+<% content_for :scripts do %>
+  <script>
+    $(document).ready(function () {
+      $('input:radio[name="kit"]').change(function () {
+        if ($(this).val() === 'yes') {
+          $('.price > span').text('$100');
+        } else {
+          $('.price > span').text('$25');
+        }
+      });
+    });
+  </script>
+<% end %>

@@ -1,5 +1,5 @@
-Given(/^I have visited the home page$/) do
-  visit root_path
+Given(/^I have visited the subscribe page$/) do
+  visit subscribe_path
 end
 
 When(/^I have selected that I need the starter kit$/) do

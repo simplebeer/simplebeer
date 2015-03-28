@@ -14,10 +14,10 @@ Feature: Adding Brews to the Queue
   Scenario: I add my first brew to the queue
     Given I have visited the brews page
     When I select to add "Impulse IPA" to my queue
-    Then the brew should show up at the top of the list
+    Then "Impulse IPA" should show up at the top of the list
 
   @selenium
   Scenario: I add my first brew to the queue
     Given I have visited the brews page
     When I select to add "Boardwalk Bullet Brown Ale" to my queue
-    Then the brew should show up at the top of the list
+    Then "Boardwalk Bullet Brown Ale" should show up at the top of the list

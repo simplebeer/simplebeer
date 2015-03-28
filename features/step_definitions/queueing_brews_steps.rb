@@ -21,6 +21,7 @@ When(/^I select to add "(.*?)" to my queue$/) do |brew_name|
   end
 end
 
-Then(/^the brew should show up at the top of the list$/) do
+Then(/^"(.*?)" should show up at the top of the list$/) do |brew_name|
   expect(page).not_to have_css(".brew-queue .getting-started")
+  expect(page).to have_css(".brew-queue .brew.#{brew_name.parameterize}")
 end

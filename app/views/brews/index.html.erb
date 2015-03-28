@@ -1,6 +1,6 @@
 <div class="available-brews">
   <% @brews.each do |brew| %>
-    <div class="brew <%= brew.slug %>">
+    <div class="brew <%= brew.slug %>" data-name="<%= brew.name %>" data-slug="<%= brew.slug %>">
       <div class="name">
         <%= brew.name %>
       </div>
@@ -15,5 +15,24 @@
 </div>
 
 <div class="brew-queue">
+  <div class="getting-started">
 
+  </div>
+
+  <div class="empty-queue">
+
+  </div>
 </div>
+
+<% content_for :scripts do %>
+  <script>
+    $(document).ready(function () {
+      $('.brew .add-to-queue').click(function () {
+        var brew = $(this).parent();
+
+        $('.getting-started').remove();
+        $('.brew-queue').prepend('<div class="brew ' + brew.data('slug') + '">' + brew.data('name') + '</div>')
+      });
+    });
+  </script>
+<% end %>
