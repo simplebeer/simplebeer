@@ -50,17 +50,24 @@ body.home {
       text-align: center;
 
       #mc_embed_signup {
-        @include outer-container;
         @include span-columns(12);
         @include omega;
 
         input[type=email] {
-          @include span-columns(9);
+          color: $gray;
+          display: inline-block;
+          margin: 0;
+          width: 70%;
         }
 
         input[type=submit] {
-          @include span-columns(3);
-          @include omega;
+          display: inline-block;
+          width: 20%;
+        }
+
+        input {
+          border-radius: 0;
+          padding: 12px;
         }
       }
     }
