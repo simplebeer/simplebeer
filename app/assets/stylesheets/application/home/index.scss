@@ -4,9 +4,13 @@ body.home.index {
   .hero {
     background: $black image-url("hero.png") no-repeat left top;
     background-size: cover;
-    min-height: 500px;
-    padding: 75px 0;
     text-align: center;
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.05);
+      min-height: 500px;
+      padding: 75px 0;
+    }
 
     .container {
       @include outer-container;
