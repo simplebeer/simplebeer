@@ -16,13 +16,19 @@ body.home.index {
       @include outer-container;
 
       h1 {
-        @include shift(3);
         @include span-columns(6);
         @include omega;
 
         font-size: 50px;
 
+        @include media($desktop, $tablet) {
+          @include shift(3);
+        }
+
         @include media($mobile) {
+          @include span-columns(4);
+          @include omega;
+
           font-size: 30px;
         }
 
@@ -32,9 +38,18 @@ body.home.index {
       }
 
       p {
-        @include shift(2);
         @include span-columns(8);
         @include omega;
+
+        @include media($desktop, $tablet) {
+          @include shift(2);
+        }
+
+        @include media($mobile) {
+          @include span-columns(4);
+
+          padding: 20px;
+        }
 
         font-size: 22px;
         line-height: 44px;
@@ -116,11 +131,19 @@ body.home.index {
 
       ul {
         @include span-columns(6);
+
+        @include media($mobile) {
+          width: 100%;
+        }
       }
 
       .box {
         @include span-columns(6);
-        @include omega;
+
+        @include media($mobile) {
+          @include span-columns(2);
+          @include shift(1);
+        }
       }
     }
   }
