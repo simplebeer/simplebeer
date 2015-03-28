@@ -1,0 +1,19 @@
+<div class="available-brews">
+  <% @brews.each do |brew| %>
+    <div class="brew <%= brew.slug %>">
+      <div class="name">
+        <%= brew.name %>
+      </div>
+      <div class="details">
+        <%= link_to "More Details", "#" %>
+      </div>
+      <a href="#" class="add-to-queue">
+        Add to Queue
+      </a>
+    </div>
+  <% end %>
+</div>
+
+<div class="brew-queue">
+
+</div>

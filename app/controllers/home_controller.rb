@@ -9,6 +9,10 @@ class HomeController < ApplicationController
     @title = "Privacy Policy"
   end
 
+  def subscribe
+    @title = "Subscribe"
+  end
+
   def terms
     @title = "Terms of Service"
   end

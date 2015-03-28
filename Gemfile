@@ -42,20 +42,27 @@ group :development, :test do
   gem "dotenv-rails"
   gem "factory_girl_rails"
   gem "foreman"
+  gem "http_logger"
   gem "letter_opener_web"
   gem "quiet_assets"
   gem "rspec-rails"
   gem "spring"
-  # gem "web-console", "~> 2.0.0.beta4"
+  gem "spring-commands-cucumber"
+  gem "spring-commands-rspec"
 end
 
 group :test do
   gem "capybara"
+  gem "cucumber-rails", require: false
   gem "database_cleaner"
   gem "faker"
   gem "guard"
+  gem "guard-cucumber"
   gem "guard-rspec"
   gem "rb-fsevent"
+  gem "rspec-expectations"
+  gem "rspec-wait"
+  gem "selenium-webdriver"
   gem "terminal-notifier-guard"
   gem "webmock"
 end

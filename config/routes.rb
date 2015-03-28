@@ -1,10 +1,10 @@
 Simplebeer::Application.routes.draw do
   root to: "home#index"
-  %w(privacy terms).each do |page|
+  %w(privacy subscribe terms).each do |page|
     get page, to: "home##{page}", as: page
   end
 
-  resources :users
+  resources :brews, :users
 
   # ---------------------------- DANGER ZONE ---------------------------- #
 
