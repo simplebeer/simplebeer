@@ -1,0 +1,57 @@
+<% unless @organization_membership.errors.count == 0 %>
+  <div id="error_explanation">
+    <i class="fa fa-times"></i>
+    <h2><%= pluralize(@organization_membership.errors.count, "error") %> prohibited the form from being submitted:</h2>
+    <ul>
+      <% @organization_membership.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="title">
+  <h1><%= @organization.display_name %> ~ <%= @organization_membership.user.display_name %></h1>
+</div>
+
+<div class="outer-container">
+  <%= render partial: "#{params[:resource_name]}/sidebar" %>
+
+  <div class="page">
+    <fieldset>
+      <legend>
+        <% unless @organization_membership.user == current_user %>
+          Edit
+        <% end %>
+        Organization Membership
+      </legend>
+
+      <%= form_for @organization_membership, url: subscriber_organization_membership_path(subscriber_params.merge(id: @organization_membership.id)) do |f| %>
+        <div>
+          <%= label_tag :user_name, "Full Name" %><br>
+          <span class="user-name"><%= @organization_membership.user.name || "--" %></span>
+        </div>
+
+        <div>
+          <%= label_tag :user_email, "Email Address" %><br>
+          <span class="user-email"><%= @organization_membership.user.email %></span>
+        </div>
+
+        <div>
+          <%= f.label :role, "User Role" %><br>
+          <% if @organization_membership.user == current_user %>
+            <span class="user-role"><%= @organization_membership.role.titleize %></span>
+          <% else %>
+            <%= f.select :role, OrganizationMembership.selectable_roles %>
+          <% end %>
+        </div>
+
+        <% unless @organization_membership.user == current_user %>
+          <div>
+            <%= f.submit "Update Membership" %>
+          </div>
+        <% end %>
+      <% end %>
+    </fieldset>
+  </div>
+</div>

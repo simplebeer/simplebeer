@@ -1,0 +1,40 @@
+<div class="title">
+  <h1>Sign In</h1>
+</div>
+
+<div class="outer-container">
+  <div class="logo">
+    <i class="fa fa-key"></i>
+  </div>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div>
+      <%= f.label :email, "Email Address" %><br>
+      <%= f.email_field :email, autofocus: true %>
+    </div>
+
+    <div>
+      <%= f.label :password %>
+      <%= link_to "Forgot your password?", new_password_path(resource_name) if devise_mapping.recoverable? %><br>
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
+
+    <% if devise_mapping.rememberable? -%>
+      <div>
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end -%>
+
+    <div>
+      <%= f.submit "Sign In", class: "button" %>
+    </div>
+  <% end %>
+
+  <% if devise_mapping.registerable? %>
+    <div class="devise-links">
+      Don&#8217;t have an account?
+      <%= link_to "Sign Up", new_registration_path(resource_name) %>
+    </div>
+  <% end %>
+</div>

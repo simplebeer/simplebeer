@@ -1,0 +1,41 @@
+<% cache ["v1", subscription_plan] do %>
+  <div class="subscription-plan" data-id="<%= subscription_plan.id %>">
+    <%= link_to defined?(url) ? url : new_user_registration_path(subscription_plan_id: subscription_plan.id) do %>
+      <span class="name" style="background-color: <%= subscription_plan.color %>;">
+        <%= subscription_plan.name %>
+      </span>
+
+      <span class="price">
+        <% if subscription_plan.price > 0 %>
+          <span class="currency"><%= number_to_currency(subscription_plan.price) %></span> /
+          <%= subscription_plan.interval_count > 1 ? pluralize(subscription_plan.interval_count, subscription_plan.interval) : subscription_plan.interval %>
+        <% else %>
+          <span class="free">Free</span>
+        <% end %>
+      </span>
+
+      <span class="trial">
+        <% if subscription_plan.trial_period_days.to_i > 0 && subscription_plan.price > 0 %>
+          <%= "#{subscription_plan.trial_period_days} Day Free Trial" %>
+        <% elsif subscription_plan.price == 0 %>
+          <%= number_to_currency(subscription_plan.price) %> /
+          <%= subscription_plan.interval_count > 1 ? pluralize(subscription_plan.interval_count, subscription_plan.interval) : subscription_plan.interval %>
+        <% else %>
+          &nbsp;
+        <% end %>
+      </span>
+
+      <span class="sign-up">
+        <% if subscription_plan.trial_period_days.to_i == 0 && subscription_plan.price > 0 %>
+          <span>Sign up now</span>
+        <% else %>
+          <span>Sign up for free</span>
+        <% end %>
+      </span>
+
+      <span class="no-credit-card">
+        No credit card needed
+      </span>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,46 @@
+@mixin vertical-navigation() {
+  ul, li, a {
+    display: block;
+  }
+
+  ul {
+    background-color: lighten($base-border-color, 10);
+    border-radius: $base-border-radius;
+    box-shadow: 0 1px 2px rgba(#000, 0.4);
+    list-style-type: none;
+    overflow: hidden;
+    padding: 0;
+    text-align: left;
+  }
+
+  li.title a {
+    background-color: $gray;
+    color: $header-font-color;
+    font-family: 'Ovo', serif;
+    font-size: 1.3em;
+    font-weight: 300;
+    padding: 12px 16px;
+  }
+
+  a {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    color: #666;
+    font-size: 1.2em;
+    padding: 14px 16px;
+    text-decoration: none;
+    @include transition(none);
+
+    &:hover {
+      background-color: rgba($base-accent-color, 0.5);
+      color: #fff;
+    }
+  }
+
+  li.active a {
+    background-color: #fff;
+    border-bottom: 1px solid $base-border-color;
+    border-top: 1px solid $base-border-color;
+    color: #444;
+  }
+}

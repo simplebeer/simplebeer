@@ -1,0 +1,21 @@
+<div class="title">
+  <h1>Pricing</h1>
+</div>
+
+<% if @subscription_plans.user.count > 0 %>
+  <section class="single-user">
+    <div class="outer-container">
+      <h2>Single User Plans</h2>
+      <%= render partial: "subscription_plans/subscription_plan", collection: @subscription_plans.user %>
+    </div>
+  </section>
+<% end %>
+
+<% if @subscription_plans.organization.count > 0 %>
+  <section class="organization">
+    <div class="outer-container">
+      <h2>Organization Plans</h2>
+      <%= render partial: "subscription_plans/subscription_plan", collection: @subscription_plans.organization %>
+    </div>
+  </section>
+<% end %>

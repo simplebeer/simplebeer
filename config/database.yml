@@ -1,0 +1,14 @@
+development:
+  adapter: postgresql
+  database: simplebeer_development
+  host: localhost
+
+test:
+  adapter: postgresql
+  database: simplebeer_test
+  host: localhost
+
+production:
+  adapter: postgresql
+  database: simplebeer_production
+  host: localhost

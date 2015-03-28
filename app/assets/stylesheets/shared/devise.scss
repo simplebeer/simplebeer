@@ -1,0 +1,110 @@
+@import "imports";
+
+body.confirmations,
+body.invitations,
+body.passwords,
+body.registrations,
+body.sessions,
+body.unlocks {
+  main .outer-container {
+    @include outer-container;
+    padding: 3em 10px 6em;
+  }
+
+  .logo {
+    @include span-columns(4);
+    text-align: center;
+
+    i {
+      color: $gray;
+      font-size: 190px;
+      margin-top: 10px;
+      text-shadow: 1px 1px 2px rgba($gray, 0.5);
+    }
+  }
+
+  form {
+    @include span-columns(4);
+    @include omega;
+    margin-bottom: 2em;
+
+    & > div {
+      margin-bottom: 0.9em;
+    }
+
+    label {
+      display: inline-block;
+      margin-bottom: 0.5em;
+    }
+
+    a {
+      color: lighten($base-font-color, 50%);
+      font-size: 0.8em;
+      margin-left: 4px;
+      text-decoration: none;
+
+      &:hover {
+        color: $base-accent-color;
+      }
+    }
+
+    #{$all-text-inputs} {
+      width: 100%;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+    }
+  }
+
+  .devise-links {
+    clear: both;
+    color: lighten($base-font-color, 10%);
+    display: block;
+    font-size: 0.9em;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+body.registrations.pricing main .outer-container {
+  padding: 0;
+}
+
+
+body.registrations .selected-plan {
+  @include span-columns(4);
+  border-radius: $base-border-radius;
+  margin-right: 5%;
+  padding: 1em 1em 0.2em;
+
+  legend {
+    color: lighten($base-font-color, 10%);
+    font-size: 1.5em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .subscription-plan {
+    margin-bottom: 0;
+  }
+
+  a.change-plan {
+    color: #aaa;
+    display: block;
+    float: left;
+    padding: 10px 10px 10px 2px;
+    text-align: center;
+    text-decoration: none;
+
+    &:hover {
+      color: $base-link-color;
+    }
+  }
+}
+
+body.registrations .devise-links {
+  padding-left: 5%;
+}

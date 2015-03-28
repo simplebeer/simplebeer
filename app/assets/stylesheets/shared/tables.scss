@@ -1,0 +1,38 @@
+@import "imports";
+
+table.default {
+  margin-bottom: 1em;
+  width: 100%;
+
+  th,
+  td {
+    background-color: rgba($base-body-color, 0.9);
+    border: 1px solid $base-border-color;
+    padding: 1em;
+    text-align: center;
+  }
+
+  th:first-of-type,
+  td:first-of-type {
+    text-align: left;
+  }
+
+  tr:nth-child(even) td {
+    background-color: rgba($base-body-color, 0.3);
+  }
+
+  tr:hover td {
+    background-color: rgba($base-accent-color, 0.04);
+  }
+
+  th {
+    background-color: $gray;
+    color: $header-font-color;
+    padding: 0.5em 1em;
+  }
+
+  tfoot tr td,
+  tfoot tr td:hover {
+    background-color: #f2f2f2;
+  }
+}

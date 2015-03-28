@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= page_title %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="http://fonts.googleapis.com/css?family=Ovo|Questrial" rel="stylesheet" type="text/css">
+  <%= stylesheet_link_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= yield :head %>
+</head>
+
+<body class="application-layout <%= body_class %>">
+  <%= render partial: "layouts/application/header" unless @hide_header %>
+  <%= render partial: "layouts/shared/flash_messages" unless @hide_header %>
+
+  <main>
+    <%= yield %>
+  </main>
+
+  <%= render partial: "layouts/application/footer" unless @hide_footer %>
+
+  <%= javascript_include_tag "application" %>
+  <%= yield :scripts %>
+  <%= render partial: "layouts/shared/analytics" %>
+</body>
+
+</html>

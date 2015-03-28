@@ -1,0 +1,76 @@
+<header>
+  <div class="outer-container">
+    <nav>
+      <ul class="features">
+        <li class="features"><%= link_to "Features", features_path %></li>
+        <li class="pricing"><%= link_to "Pricing", pricing_path %></li>
+        <li class="contact"><%= link_to "Contact", contact_path %></li>
+      </ul>
+      <ul class="account">
+        <% if current_user %>
+          <li class="user">
+            <%= link_to edit_user_path(current_user), title: "Account Settings" do %>
+              <span><%= current_user.display_name %></span>
+              <i class="fa fa-cog"></i>
+            <% end %>
+            <%= link_to destroy_user_session_path, title: "Sign Out", class: "sign-out", method: :delete do %>
+              <i class="fa fa-sign-out"></i>
+            <% end %>
+          </li>
+        <% else %>
+          <li class="new-session"><%= link_to "Sign In", new_user_session_path %></li>
+          <li class="new-registration"><%= link_to "Sign Up", new_user_registration_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+    <div class="logo">
+      <h1>
+        <i class="fa fa-cube"></i>
+        <%= site_title %>
+      </h1>
+      <h2>This is going to be awesome.</h2>
+    </div>
+  </div>
+</header>
+
+<%= render partial: "layouts/shared/flash_messages" %>
+
+<section class="feature">
+  <div class="browser">
+    <div class="navigation">
+      <ul class="window-buttons">
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      <div class="address-bar">
+        <%= request.original_url %>
+      </div>
+    </div>
+    <hr>
+    <div class="page">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <hr>
+  </div>
+  <div class="feature-text">
+    <h3>Some Awesome Feature</h3>
+    <p>
+      You will love how easy it is to sign up and pay money with a
+      credit card. You can even sign up additional users and pay more money!
+    </p>
+  </div>
+</section>
+<section class="sign-up">
+  <div class="outer-container">
+    <h3>Sign Up Today!</h3>
+    <h4>Get started with a <strong>free</strong> account.</h4>
+    <p>
+      <%= link_to "Sign up for free!", new_user_registration_path, class: "button" %>
+    </p>
+  </div>
+</section>

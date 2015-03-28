@@ -1,0 +1,46 @@
+<% unless resource.errors.count == 0 %>
+  <div id="error_explanation">
+    <i class="fa fa-times"></i>
+    <h2><%= pluralize(resource.errors.count, "error") %> prohibited this form from being submitted:</h2>
+    <ul>
+      <% resource.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="title">
+  <h1>Reset Your Password</h1>
+</div>
+
+<div class="outer-container">
+  <div class="logo">
+    <i class="fa fa-unlock"></i>
+  </div>
+
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.hidden_field :reset_password_token %>
+
+    <div>
+      <%= f.label :password, "New password" %><br>
+      <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+    </div>
+
+    <div>
+      <%= f.label :password_confirmation, "Confirm new password" %><br>
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    </div>
+
+    <div>
+      <%= f.submit "Reset My Password" %>
+    </div>
+  <% end %>
+
+  <div class="devise-links">
+    <%= link_to "Sign In", new_session_path(resource_name) %>
+    <% if devise_mapping.registerable? %>
+      or <%= link_to "Sign Up", new_registration_path(resource_name) %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<% unless resource.errors.count == 0 %>
+  <div id="error_explanation">
+    <i class="fa fa-times"></i>
+    <h2><%= pluralize(resource.errors.count, "error") %> prohibited this form from being submitted:</h2>
+    <ul>
+      <% resource.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="title">
+  <h1><%= @title %></h1>
+</div>
+
+<% if @subscription_plan %>
+  <div class="outer-container">
+    <fieldset class="selected-plan">
+      <legend>Selected Plan</legend>
+      <%= render partial: "subscription_plans/subscription_plan", locals: { subscription_plan: @subscription_plan }  %>
+      <%= link_to "« Change Plan", new_user_registration_path, class: "change-plan" %>
+    </fieldset>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.hidden_field :subscription_plan_id, value: @subscription_plan.id %>
+
+      <div>
+        <%= f.label :name, "Full Name", class: "required" %><br>
+        <%= f.text_field :name, autofocus: true %>
+      </div>
+
+      <div>
+        <%= f.label :email, "Email Address", class: "required" %><br>
+        <%= f.email_field :email %>
+      </div>
+
+      <div>
+        <%= f.label :password, class: "required" %><br>
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <div>
+        <%= f.submit "Sign Up" %>
+      </div>
+    <% end %>
+
+    <div class="devise-links">
+      Already have an account?
+      <%= link_to "Sign In", new_session_path(resource_name) %>
+    </div>
+  </div>
+<% else %>
+  <% if @subscription_plans.user.count > 0 %>
+    <section class="single-user">
+      <div class="outer-container">
+        <h2>Single User Plans</h2>
+        <%= render partial: "subscription_plans/subscription_plan", collection: @subscription_plans.user %>
+      </div>
+    </section>
+  <% end %>
+
+  <% if @subscription_plans.organization.count > 0 %>
+    <section class="organization">
+      <div class="outer-container">
+        <h2>Organization Plans</h2>
+        <%= render partial: "subscription_plans/subscription_plan", collection: @subscription_plans.organization %>
+      </div>
+    </section>
+  <% end %>
+<% end %>

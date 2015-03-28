@@ -1,0 +1,36 @@
+@import "imports";
+
+body.organization-memberships.index table {
+  .role {
+    width: 100px;
+  }
+
+  .actions {
+    width: 190px;
+  }
+
+  .button {
+    @include button($notice-color);
+    padding: 5px 6px;
+
+    &.destroy {
+      @include button($alert-color);
+      margin-left: 5px;
+      padding: 5px 6px;
+    }
+  }
+
+  span.button.destroy {
+    box-shadow: none;
+    cursor: default;
+    opacity: 0.4;
+
+    &:hover {
+      box-shadow: none;
+    }
+
+    &.animate:hover {
+      @include transform(none);
+    }
+  }
+}

@@ -1,0 +1,42 @@
+<header>
+  <div class="outer-container">
+    <div class="branding">
+      <%= link_to root_path do %>
+        <i class="fa fa-cube"></i>
+        <%= site_title %>
+      <% end %>
+    </div>
+    <nav>
+      <ul>
+        <li class="features<%= current_page?(features_path) ? " active" : "" %>">
+          <%= link_to "Features", features_path %>
+        </li>
+        <li class="pricing<%= current_page?(pricing_path) ? " active" : "" %>">
+          <%= link_to "Pricing", pricing_path %>
+        </li>
+        <li class="contact<%= current_page?(contact_path) ? " active" : "" %>">
+          <%= link_to "Contact", contact_path %>
+        </li>
+        <li class="divider"></li>
+        <% if current_user %>
+          <li class="user">
+            <%= link_to edit_user_path(current_user), title: "Account Settings" do %>
+              <span><%= current_user.display_name %></span>
+              <i class="fa fa-cog"></i>
+            <% end %>
+            <%= link_to destroy_user_session_path, title: "Sign Out", class: "sign-out", method: :delete do %>
+              <i class="fa fa-sign-out"></i>
+            <% end %>
+          </li>
+        <% else %>
+          <li class="new-session <%= current_page?(new_user_session_path) ? "active" : "" %>">
+            <%= link_to "Sign In", new_user_session_path %>
+          </li>
+          <li class="new-registration <%= current_page?(new_user_registration_path) ? "active" : "" %>">
+            <%= link_to "Sign Up", new_user_registration_path %>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>

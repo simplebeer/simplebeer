@@ -1,0 +1,45 @@
+<% unless resource.errors.count == 0 %>
+  <div id="error_explanation">
+    <i class="fa fa-times"></i>
+    <h2><%= pluralize(resource.errors.count, "error") %> prohibited this form from being submitted:</h2>
+    <ul>
+      <% resource.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="title">
+  <h1><%= @title %></h1>
+</div>
+
+<div class="outer-container">
+  <div class="logo">
+    <i class="fa fa-users"></i>
+  </div>
+
+  <%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.hidden_field :invitation_token %>
+    <%= f.hidden_field :subscription_plan_id, value: -1 %>
+
+    <div>
+      <%= f.label :name, "Full Name", class: "required" %><br>
+      <%= f.text_field :name, autofocus: true %>
+    </div>
+
+    <div>
+      <%= f.label :email, "Email Address" %><br>
+      <%= f.text_field :email, disabled: true %>
+    </div>
+
+    <div>
+      <%= f.label :password, class: "required" %><br>
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
+
+    <div>
+      <%= f.submit "Sign Up" %>
+    </div>
+  <% end %>
+</div>

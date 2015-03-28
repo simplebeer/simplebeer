@@ -1,0 +1,28 @@
+<% unless resource.errors.count == 0 %>
+  <div id="error_explanation">
+    <i class="fa fa-times"></i>
+    <h2><%= pluralize(resource.errors.count, "error") %> prohibited this form from being submitted:</h2>
+    <ul>
+      <% resource.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="title">
+  <h1>Resend Confirmation Instructions</h1>
+</div>
+
+<div class="outer-container">
+  <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+    <div>
+      <%= f.label :email %><br >
+      <%= f.email_field :email, autofocus: true %>
+    </div>
+
+    <div>
+      <%= f.submit "Resend Confirmation Instructions" %>
+    </div>
+  <% end %>
+</div>

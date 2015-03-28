@@ -1,0 +1,35 @@
+<div class="sidebar users">
+  <ul>
+    <li class="title">
+      <%= link_to current_user.display_name, edit_user_path(current_user) %>
+    </li>
+
+    <li class="account-settings<%= current_page?(edit_user_path(current_user)) ? " active" : "" %>">
+      <%= link_to "My Account", edit_user_path(current_user) %>
+    </li>
+
+    <li class="billing<%= current_page?(edit_subscriber_subscription_path(subscriber_params)) ? " active" : "" %>">
+      <%= link_to "Billing", edit_subscriber_subscription_path(subscriber_params) %>
+    </li>
+
+    <li class="connected-accounts<%= current_page?(subscriber_omni_auth_providers_path(subscriber_params)) ? " active" : "" %>">
+      <%= link_to "Connected Services", subscriber_omni_auth_providers_path(subscriber_params) %>
+    </li>
+
+    <li>
+      <%= link_to "Notification Settings" %>
+    </li>
+
+    <li class="organizations<%= current_page?(organizations_path) ? " active" : "" %>">
+      <%= link_to "Organizations", organizations_path %>
+    </li>
+
+    <% current_user.organizations.ordered_by_name.each do |organization| %>
+      <% if can? :update, organization %>
+        <li class="organization">
+          <%= link_to organization.name, edit_organization_path(organization) %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

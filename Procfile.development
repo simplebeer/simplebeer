@@ -1,0 +1,4 @@
+clock: bundle exec clockwork clock.rb
+redis: redis-server
+web: bundle exec rails s Puma
+worker: bundle exec sidekiq -q default -q mailer

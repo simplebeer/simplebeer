@@ -1,0 +1,151 @@
+<div class="title">
+  <h1>Billing</h1>
+</div>
+
+<div class="outer-container">
+  <%= render partial: "#{params[:resource_name]}/sidebar" %>
+
+  <div class="page">
+    <fieldset>
+      <legend>Subscription Plan</legend>
+
+      <div class="current-subscription-plan">
+        <% if @subscription %>
+          <%= render partial: "subscription_plans/subscription_plan", locals: { subscription_plan: @subscription.plan, url: new_subscriber_subscription_path }  %>
+        <% else %>
+          <div class="subscription-plan">
+            <%= link_to new_subscriber_subscription_path do %>
+              <span class="name">
+                No Plan
+              </span>
+
+              <span class="price">
+                <span class="currency"><%= number_to_currency(0) %></span> / month
+              </span>
+
+              <span class="note">
+                Not subscribed to a single user plan
+              </span>
+            <% end %>
+          </div>
+        <% end %>
+        <%= link_to "Change Plan", new_subscriber_subscription_path %>
+      </div>
+
+      <div class="current-subscription">
+        <table>
+          <thead>
+            <tr>
+              <th colspan="2">
+                <i class="fa fa-credit-card"></i>
+                Payment Method
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Credit Card:</td>
+              <td>
+                <% if @subscription && @subscription.payment_method %>
+                  <%= @subscription.payment_method.display_name %>
+                <% else %>
+                  <span class="empty">--</span>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td>Expiration:</td>
+              <td>
+                <% if @subscription && @subscription.payment_method %>
+                  <%= @subscription.payment_method.expiration_date %>
+                <% else %>
+                  <span class="empty">--</span>
+                <% end %>
+              </td>
+            </tr>
+
+            <% if @subscription && @subscription.trialing? %>
+              <tr>
+                <td>Trial Ends:</td>
+                <td><%= local_time(@subscription.trial_ends_at, "%B %e, %Y") %></td>
+              </tr>
+            <% else %>
+              <tr>
+                <td>Next payment:</td>
+                <td>
+                  <% if @subscription %>
+                    <%= local_time(@subscription.current_period_end, "%B %e, %Y") %>
+                  <% else %>
+                    <span class="empty">--</span>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="2">
+                <% if @subscription && @subscription.payment_method %>
+                  <%= link_to "Update Payment Method", edit_subscriber_subscription_payment_method_path %>
+                <% elsif @subscription %>
+                  <%= link_to "Add Payment Method", edit_subscriber_subscription_payment_method_path %>
+                <% end %>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </fieldset>
+
+    <fieldset class="payment-history">
+      <legend>Payment History</legend>
+
+      <table class="default">
+        <thead>
+          <tr>
+            <th colspan="4">Current Billing Period</th>
+            <th colspan="2">Account Balance</th>
+          </tr>
+          <tr>
+            <td colspan="4">
+              <% if @subscription %>
+                <%= local_time(@subscription.current_period_start, "%B %e, %Y") %>
+                &#8211;
+                <%= local_time(@subscription.current_period_end, "%B %e, %Y") %>
+              <% else %>
+                Not subscribed to a single user plan
+              <% end %>
+            </td>
+            <td colspan="2"><%= number_to_currency(current_user.account_balance) %></td>
+          </tr>
+          <tr>
+            <th>Invoice #</th>
+            <th>Date</th>
+            <th>Plan</th>
+            <th>Payment Method</th>
+            <th>Amount</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @invoices.count > 0 %>
+            <% @invoices.each do |invoice| %>
+              <tr>
+                <td><%= link_to invoice %></td>
+                <td>2014-09-12</td>
+                <td>Value</td>
+                <td>Visa ***412</td>
+                <td>$9.00</td>
+                <td>Success</td>
+              </tr>
+            <% end %>
+          <% else %>
+            <tr>
+              <td colspan="6">Your account doesn&#8217;t have any invoices.</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </fieldset>
+  </div>
+</div>

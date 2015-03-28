@@ -1,0 +1,123 @@
+@import "imports";
+
+div.subscription-plan {
+  background-color: #fff;
+  border-radius: $base-border-radius;
+  box-shadow: 0 1px 2px rgba(#000, 0.4);
+  cursor: pointer;
+  margin-bottom: 2em;
+  overflow: hidden;
+  text-align: center;
+
+  a {
+    display: block;
+    text-decoration: none;
+  }
+}
+
+div.subscription-plan {
+  .name {
+    background-color: $gray;
+    color: #fff;
+    display: block;
+    font-family: 'Ovo', serif;
+    font-size: 2em;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin: 0;
+    padding: 0.5em 1em;
+  }
+
+  .price {
+    color: #888;
+    display: block;
+    font-family: 'Ovo', serif;
+    font-size: em(24px);
+    font-weight: 300;
+    margin: em(20px) auto 4px;
+
+    .currency {
+      color: #777;
+      font-size: 1.8em;
+      text-shadow: 1px 1px 1px #ccc;
+    }
+  }
+
+  .free {
+    color: #777;
+    display: block;
+    font-size: 1.8em;
+    letter-spacing: em(4px);
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px #ccc;
+  }
+
+  .trial {
+    color: #bbb;
+    display: block;
+    margin-bottom: em(40px);
+  }
+
+  .sign-up {
+    display: none;
+  }
+
+  .sign-up span {
+    border: 1px solid $base-link-color;
+    border-radius: $base-border-radius;
+    display: inline-block;
+    margin: 1em 1em 0.5em;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &:hover {
+      border-color: $hover-link-color;
+    }
+  }
+
+  .no-credit-card {
+    color: #999;
+    display: none;
+    font-family: 'Ovo', serif;
+    font-size: em(13px);
+    font-weight: 300;
+    margin: 0 0 2em;
+  }
+}
+
+div.subscription-plan:after {
+  background-color: $header-background-color;
+  border-bottom: 1px solid darken($header-background-color, 10%);
+  border-top: 1px solid darken($header-background-color, 10%);
+  box-shadow: 0 2px 4px rgba(#000, 0.3);
+  color: $header-font-color;
+  content: "Selected";
+  display: block;
+  font-size: 1.2em;
+  left: -45px;
+  opacity: 0;
+  padding: 0.3em;
+  position: absolute;
+  text-align: center;
+  top: 20px;
+  width: 150px;
+  @include transform(rotate(-45deg));
+  @include transition(opacity 0.2s ease);
+}
+
+div.subscription-plan.current:after {
+  background-color: lighten($header-background-color, 10%);
+  border-bottom: 1px solid $header-background-color;
+  border-top: 1px solid $header-background-color;
+  content: "Old Plan";
+  opacity: 0.6;
+}
+
+div.subscription-plan.selected:after {
+  background-color: $header-background-color;
+  border-bottom: 1px solid darken($header-background-color, 10%);
+  border-top: 1px solid darken($header-background-color, 10%);
+  content: "Selected";
+  opacity: 1;
+}
