@@ -1,37 +1,11 @@
 module Authentication
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     skip_authorization_check
-    layout "home"
 
     before_action :set_omni_auth_provider
 
-    def digitalocean
-      @provider_name = "DigitalOcean"
-      handle_callback
-    end
-
     def facebook
       @provider_name = "Facebook"
-      handle_callback
-    end
-
-    def github
-      @provider_name = "GitHub"
-      handle_callback
-    end
-
-    def google_oauth2
-      @provider_name = "Google"
-      handle_callback
-    end
-
-    def heroku
-      @provider_name = "Heroku"
-      handle_callback
-    end
-
-    def slack
-      @provider_name = "Slack"
       handle_callback
     end
 

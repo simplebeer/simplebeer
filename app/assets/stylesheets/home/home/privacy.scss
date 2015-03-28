@@ -1,9 +1,0 @@
-@import "imports";
-
-body.home.privacy main {
-  .outer-container {
-    @include outer-container;
-    min-height: 300px;
-    padding: 2em 10px 3em;
-  }
-}

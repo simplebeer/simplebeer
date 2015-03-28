@@ -18,35 +18,7 @@ module ApplicationHelper
   end
 
   def site_title
-    "Simplebeer"
-  end
-
-  def subscriber_params
-    if @organization && @organization.persisted?
-      {
-        resource_name: "organizations",
-        subscriber_id: @organization.id
-      }
-    elsif current_user && current_user.active_subscription?
-      {
-        resource_name: "users",
-        subscriber_id: current_user.id
-      }
-    elsif current_user
-      if organization = current_user.organizations.find{|organization| organization.active_subscription? }
-        {
-          resource_name: "organizations",
-          subscriber_id: organization.id
-        }
-      else
-        {
-          resource_name: "users",
-          subscriber_id: current_user.id
-        }
-      end
-    else
-      {}
-    end
+    "Simple Beer"
   end
 
 end

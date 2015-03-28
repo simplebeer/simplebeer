@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  layout "account"
-  before_action :set_user, :set_subscriber
+  before_action :set_user
 
   def edit
     authorize! :update, @user
@@ -33,15 +32,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def url_options
-    { resource_name: "users", subscriber_id: current_user.id }.merge(super)
-  end
-
 private
-
-  def set_subscriber
-    @subscriber = @user
-  end
 
   def set_user
     @user = User.find(params[:id])

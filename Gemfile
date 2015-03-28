@@ -33,6 +33,10 @@ gem "sinatra"
 gem "stripe"
 gem "uglifier"
 
+# Connected Services - OmniAuth Providers
+gem "omniauth-facebook"
+gem "omniauth-twitter"
+
 group :development, :test do
   gem "byebug"
   gem "dotenv-rails"

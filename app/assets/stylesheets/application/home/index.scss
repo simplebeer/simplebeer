@@ -1,0 +1,20 @@
+@import "imports";
+
+body.home {
+  main {
+    @include outer-container;
+    padding: 2em 1em;
+  }
+
+  .email {
+    display: inline-block;
+    min-width: 220px;
+    width: auto;
+  }
+
+  .button {
+    @include button;
+    position: relative;
+    top: -2px;
+  }
+}

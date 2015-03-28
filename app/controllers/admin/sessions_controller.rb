@@ -1,7 +1,6 @@
 module Admin
   class SessionsController < Devise::SessionsController
     skip_authorization_check
-    layout "home"
 
     def create
       @title = "Sign In"

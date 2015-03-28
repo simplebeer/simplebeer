@@ -1,4 +1,4 @@
-class User < Subscriber
+class User < ActiveRecord::Base
   acts_as_paranoid
   self.table_name = "users"
 
