@@ -64,12 +64,14 @@ body.home.index {
     padding: 2em 1em;
 
     section.sign-up {
-      @include shift(2);
       @include span-columns(8);
       @include omega;
 
+      @include media($desktop, $tablet) {
+        @include shift(2);
+      }
+
       @include media($mobile) {
-        @include shift(0);
         @include span-columns(4);
       }
 
