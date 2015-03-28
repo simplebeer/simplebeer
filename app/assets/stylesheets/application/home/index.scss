@@ -21,8 +21,12 @@ body.home.index {
 
         font-size: 50px;
 
-        @include media($desktop, $tablet) {
+        @include media($desktop) {
           @include shift(3);
+        }
+
+        @include media($tablet) {
+          @include shift(2);
         }
 
         @include media($mobile) {
@@ -41,7 +45,11 @@ body.home.index {
         @include span-columns(8);
         @include omega;
 
-        @include media($desktop, $tablet) {
+        @include media($desktop) {
+          @include shift(2);
+        }
+
+        @include media($tablet) {
           @include shift(2);
         }
 
@@ -67,7 +75,11 @@ body.home.index {
       @include span-columns(8);
       @include omega;
 
-      @include media($desktop, $tablet) {
+      @include media($desktop) {
+        @include shift(2);
+      }
+
+      @include media($tablet) {
         @include shift(2);
       }
 
