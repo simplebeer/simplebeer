@@ -26,13 +26,37 @@
 
 <% content_for :scripts do %>
   <script>
-    $(document).ready(function () {
-      $('.brew .add-to-queue').click(function () {
-        var brew = $(this).parent();
 
-        $('.getting-started').remove();
-        $('.brew-queue').prepend('<div class="brew ' + brew.data('slug') + '">' + brew.data('name') + '</div>')
-      });
-    });
+    function addBrew () {
+      var brew = $(this).parent();
+
+      $('.getting-started').remove();
+      $('.brew-queue').prepend(
+        '<div class="brew ' + brew.data('slug') + '">'
+        + brew.data('name')
+        + '<a href="#" class="remove-from-queue">Remove from Queue</a>' +
+        '</div>'
+      );
+
+      $('.brew-queue .' + brew.data('slug')).click(removeBrew);
+
+      return false;
+    }
+
+    function removeBrew () {
+      var queue = $('.brew-queue'),
+          self = $(this);
+
+      self.remove();
+
+      if (queue.find('.brew') === 0) {
+        self.prepend('<div class="getting-started">hi</div>');
+      }
+
+      return false;
+    }
+
+    $('.add-to-queue').click(addBrew);
+    $('.remove-from-queue').click(removeBrew);
   </script>
 <% end %>

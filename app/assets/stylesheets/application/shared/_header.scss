@@ -1,0 +1,14 @@
+@import "imports";
+
+header {
+  border-bottom: 2px solid $white;
+  padding: 20px;
+
+  .container {
+    @include outer-container;
+
+    .logo {
+      @include span-columns(4);
+    }
+  }
+}

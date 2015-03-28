@@ -1,9 +1,85 @@
 @import "imports";
 
 body.home {
+  .hero {
+    background: $black image-url("hero.png") no-repeat left top;
+    background-size: cover;
+    min-height: 500px;
+    padding: 75px;
+    text-align: center;
+
+    .container {
+      @include outer-container;
+
+      h1 {
+        @include shift(3);
+        @include span-columns(6);
+        @include omega;
+
+        font-size: 50px;
+
+        span.problem {
+          text-decoration: underline;
+        }
+      }
+
+      p {
+        @include shift(2);
+        @include span-columns(8);
+        @include omega;
+
+        font-size: 22px;
+        line-height: 44px;
+        text-align: left;
+      }
+    }
+  }
+
   main {
     @include outer-container;
+
     padding: 2em 1em;
+
+    section.sign-up {
+      @include shift(2);
+      @include span-columns(8);
+      @include omega;
+
+      margin-bottom: 75px;
+      margin-top: 50px;
+      text-align: center;
+
+      #mc_embed_signup {
+        @include outer-container;
+        @include span-columns(12);
+        @include omega;
+
+        input[type=email] {
+          @include span-columns(9);
+        }
+
+        input[type=submit] {
+          @include span-columns(3);
+          @include omega;
+        }
+      }
+    }
+
+    section.starter-kit {
+      @include outer-container;
+      @include shift(2);
+      @include span-columns(8);
+      @include omega;
+
+      ul {
+        @include span-columns(6);
+      }
+
+      .box {
+        @include span-columns(6);
+        @include omega;
+      }
+    }
   }
 
   .email {

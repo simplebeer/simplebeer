@@ -3,7 +3,8 @@
 <head>
   <title><%= page_title %></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="http://fonts.googleapis.com/css?family=Ovo|Questrial" rel="stylesheet" type="text/css">
+  <link href='http://fonts.googleapis.com/css?family=Merriweather:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tags %>
   <%= yield :head %>
@@ -13,6 +14,8 @@
   <%= render partial: "layouts/application/header" unless @hide_header %>
   <%= render partial: "layouts/shared/flash_messages" unless @hide_header %>
 
+  <%= yield :hero %>
+  
   <main>
     <%= yield %>
   </main>

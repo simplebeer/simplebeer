@@ -2,29 +2,29 @@
 $max-width: 1088px;
 
 // Typography
-$sans-serif: $helvetica;
-$serif: $georgia;
+$sans-serif: 'Source Sans Pro', sans-serif;
+$serif: "Merriweather", serif;
 
 $base-font-family: $sans-serif;
-$header-font-family: $base-font-family;
+$header-font-family: $serif;
 
 // Sizes
 $base-font-size: 16px;
 $base-line-height: $base-font-size * 1.5;
 $base-border-radius: em(3);
 
-// Body Color
-$base-body-color: #fff;
-
 // Named Colors
-$blue: #3c7e9d;
-$gray: #464852;
-$green: #59ad51;
-$red: #ca133d;
+$black: #000000;
+$gray: #4F5058;
+$gold: #FFD933;
+$white: #FFFFFF;
+
+// Body Color
+$base-body-color: $gray;
 
 // Font Colors
-$base-font-color: #3e3e3e;
-$base-accent-color: $blue;
+$base-font-color: $white;
+$base-accent-color: $gold;
 
 // Text Link Colors
 $base-link-color: $base-accent-color;
@@ -34,7 +34,7 @@ $hover-link-color: darken($base-accent-color, 8%);
 $base-border-color: #ddd;
 
 // Flash Colors
-$alert-color: $red;
+$alert-color: $gold;
 $notice-color: rgba($base-accent-color, 0.8);
 
 // Form Colors

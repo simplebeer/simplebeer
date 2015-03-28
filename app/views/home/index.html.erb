@@ -1,16 +1,17 @@
-<main>
-  <h1 class="problem">Brewing beer is hard</h1>
+<% content_for :hero do %>
+  <section class="hero">
+    <div class="container">
+      <h1>Take the <span class="problem">confusion</span> out of brewing beer.</h1>
 
-  <p class="solve-problem">
-    Simple Beer solves this problem by providing first time brewers
-    with our <a href="#starter-kit">Starter Kit</a> with everything needed
-    to brew a perfect gallon of beer every month.
-  </p>
+      <p>
+        We provide you with everything you need to brew a perfect gallon of beer each month, including easy to follow instructions. Our Starter Kit includes all of the hardward you need to get going.
+      </p>
+    </div>
+  </section>
+<% end %>
 
-  <p class="start-up-weekend">
-    Sign up with your email address to be notified about our progress
-    and be the first to find out when we’re ready to start shipping brew kits.
-  </p>
+<section class="sign-up">
+  <h3>Be the first to find out when we start shipping!</h3>
 
   <!-- Begin MailChimp Signup Form -->
   <div id="mc_embed_signup">
@@ -31,38 +32,26 @@
   </div>
   <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
   <!--End mc_embed_signup-->
+</section>
 
-  <div class="brew-recipes">
-    <h2>What shows up each month?</h2>
+<section class="starter-kit">
+  <h3>What’s in the Starter Kit?</h3>
 
-    <ul>
-      <li>Pre-measured ingredients</li>
-      <li>Easy to follow, step-by-step instructions</li>
-      <li>Sanitizer</li>
-      <li>More bottle caps!</li>
-    </ul>
+  <ul>
+    <li>1 gallon glass fermentation jug with stopper</li>
+    <li>Airlock</li>
+    <li>Thermometer strip</li>
+    <li>(12) 12oz bottles with caps</li>
+    <li>Bottle capper</li>
+    <li>Brew bag</li>
+    <li>Funnel</li>
+    <li>Racking cane with siphon hose</li>
+    <li>Large faced bi-metal thermometer</li>
+    <li>Blow off hose</li>
+    <li>(2) Cleaning brushes</li>
+  </ul>
+
+  <div class="box">
+    <%= image_tag("starter_kit.png") %>
   </div>
-
-  <div id="starter-kit" class="in-the-box">
-    <h2>What’s in the Starter Kit?</h2>
-
-    <p>
-      If you’ve never attempted brewing beer before, our starter kit is for you.
-      We include everything you need to start brewing beer. Even the bottles!
-    </p>
-
-    <ul>
-      <li>1 gallon glass fermentation jug with stopper</li>
-      <li>Airlock</li>
-      <li>Thermometer strip</li>
-      <li>(12) 12oz bottles with caps</li>
-      <li>Bottle capper</li>
-      <li>Brew bag</li>
-      <li>Funnel</li>
-      <li>Racking cane with siphon hose</li>
-      <li>Large faced bi-metal thermometer</li>
-      <li>Blow off hose</li>
-      <li>(2) Cleaning brushes</li>
-    </ul>
-  </div>
-</main>
+</section>
