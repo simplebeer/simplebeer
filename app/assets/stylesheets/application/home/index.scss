@@ -166,3 +166,56 @@ body.home.index .kits {
     @include omega;
   }
 }
+
+body.home.index {
+  .hero.why {
+    background: $black image-url("hero_bottom.png") no-repeat left top;
+    background-size: cover;
+
+    h2 {
+      font-size: 34px;
+      font-weight: bold;
+      margin-bottom: 1.5em;
+    }
+
+    .instructions {
+      @include span-columns(6);
+
+      &.us {
+        @include omega;
+      }
+
+      @include media($mobile) {
+        float: none;
+        margin-bottom: 1em;
+        margin-right: 0;
+        width: 100%;
+
+        &.us {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    h3 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 1em;
+    }
+
+    img {
+      margin: 1em auto;
+      width: 230px;
+    }
+
+    .us img {
+      margin-top: 1.7em;
+    }
+
+    p {
+      clear: both;
+      margin-bottom: 0;
+      padding-top: 1em;
+    }
+  }
+}
