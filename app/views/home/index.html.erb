@@ -1,7 +1,7 @@
 <% content_for :hero do %>
   <section class="hero">
     <div class="container">
-      <h1>Take the <span class="problem">confusion</span> out of brewing beer.</h1>
+      <h1>Take the <span class="problem"><span>confusion</span></span> out of brewing beer.</h1>
 
       <p>
         We provide you with everything you need to brew a perfect gallon of beer each month,
@@ -72,3 +72,38 @@
     </ul>
   </div>
 </section>
+
+<% content_for :scripts do %>
+  <script>
+    var words = [
+      "guesswork",
+      "pain",
+      "headache"
+    ];
+    var lastWord = words[0];
+
+    function updateProblem(problems) {
+      var problem = problems.pop();
+
+      $('.problem span').animate({
+        opacity: 0
+      }, 700, 'swing', function() {
+        $('.problem span').text(problem);
+
+        $('.problem span').animate({
+          opacity: 1
+        }, 700, 'swing', function() {
+          if (problem !== lastWord) {
+            setTimeout(function() {
+              updateProblem(problems);
+            }, 2500);
+          }
+        });
+      });
+    }
+
+    setTimeout(function() {
+      updateProblem(words);
+    }, 2500);
+  </script>
+<% end %>

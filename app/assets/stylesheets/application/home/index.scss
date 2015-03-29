@@ -20,8 +20,34 @@ body.home.index {
           font-size: 30px;
         }
 
-        span.problem {
-          text-decoration: underline;
+        .problem {
+          display: inline-block;
+          min-width: 266px;
+
+          span {
+            min-height: 65px;
+          }
+
+          &:after {
+            border-bottom: 3px solid #fff;
+            content: " ";
+            display: block;
+            position: relative;
+            top: -10px;
+          }
+
+          @include media($mobile) {
+            min-width: 160px;
+
+            span {
+              min-height: 38px;
+            }
+
+            &:after {
+              border-bottom: 2px solid #fff;
+              top: -6px;
+            }
+          }
         }
       }
 

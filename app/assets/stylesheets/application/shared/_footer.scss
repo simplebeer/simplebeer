@@ -1,0 +1,7 @@
+@import "imports";
+
+footer {
+  @include outer-container;
+  padding: 2em;
+  text-align: center;
+}
