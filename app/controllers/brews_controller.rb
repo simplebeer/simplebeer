@@ -11,11 +11,11 @@ private
   def brew_names
     @brew_names ||= [
       "Impulse IPA",
-      "Boardwalk Bullet Brown Ale",
+      "Hoot n Holler Hefeweizen",
       "Oblivion Oatmeal Stout",
+      "Boardwalk Bullet Brown Ale",
       "Sidewinder Saison",
       "Pegasus Pale Ale",
-      "Hoot n Holler Hefeweizen",
       "Pandemonium Porter",
       "Red Falcon Irish Red Ale",
       "Outlaw Run Old Ale",

@@ -3,7 +3,7 @@
 body.brews main {
   @include clearfix;
   @include outer-container;
-  background-color: lighten($gray, 12%);
+  background-color: lighten($gray, 17%);
   border-bottom: 2px solid #fff;
   border-left: 2px solid #fff;
   border-right: 2px solid #fff;
@@ -28,13 +28,19 @@ body.brews main {
     }
 
     .brew {
-      background-color: lighten($gray, 12%);
+      background-color: lighten($gray, 17%);
       border-bottom: 2px solid #fff;
       height: 60px;
       overflow: hidden;
       padding: 10px;
       position: relative;
       z-index: 10;
+
+      img {
+        float: left;
+        margin-right: 5px;
+        width: 30px;
+      }
 
       .name {
         font-weight: bold;
@@ -86,15 +92,14 @@ body.brews main {
 }
 
 body.brews .available-brews {
-  background-color: #fff;
-  color: #323232;
+  border-right: 2px solid #fff;
   float: left;
   width: 70%;
 
   .controls {
     @include outer-container;
     background-color: $base-body-color;
-    border-right: 2px solid #fff;
+    // border-right: 2px solid #fff;
     color: #fff;
     font-size: 20px;
     padding: 8px 10px;
@@ -130,10 +135,6 @@ body.brews .available-brews {
   }
 }
 
-body.brews .available-brews .brews {
-  padding-top: 2em;
-}
-
 body.brews .available-brews .brews .brew {
   @include span-columns(4);
   min-height: 200px;
@@ -141,11 +142,26 @@ body.brews .available-brews .brews .brew {
   text-align: center;
 
   .brew-logo {
-    margin-bottom: 0.5em;
+    height: 200px;
+    margin: 0 auto 0.5em;
+    position: relative;
+    width: 200px;
+  }
 
-    i {
-      font-size: 50px;
-    }
+  .box {
+    left: 25px;
+    position: absolute;
+    top: 25px;
+    width: 170px;
+    z-index: 1;
+  }
+
+  .glass {
+    bottom: 0;
+    left: -10px;
+    position: absolute;
+    width: 130px;
+    z-index: 2;
   }
 
   .name {
@@ -154,6 +170,14 @@ body.brews .available-brews .brews .brew {
 
   .details {
     font-size: 13px;
+
+    a {
+      color: rgba(#fff, 0.8);
+
+      &:hover {
+        color: #fff;
+      }
+    }
   }
 
   &:nth-child(3n) {

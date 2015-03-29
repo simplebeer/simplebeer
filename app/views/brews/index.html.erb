@@ -21,7 +21,21 @@
     <% @brews.each do |brew| %>
       <div class="brew <%= brew.slug %>" data-name="<%= brew.name %>" data-slug="<%= brew.slug %>">
         <div class="brew-logo">
-          <i class="fa fa-beer"></i>
+          <%= image_tag("box.png", class: "box") %>
+          <% case brew.name %>
+          <% when "Impulse IPA" %>
+            <%= image_tag("short_glass_orange.png", class: "glass") %>
+          <% when "Red Falcon Irish Red Ale", "Boardwalk Bullet Brown Ale" %>
+            <%= image_tag("tall_glass_red.png", class: "glass") %>
+          <% when "Oblivion Oatmeal Stout", "Pandemonium Porter" %>
+            <%= image_tag("tall_glass_dark.png", class: "glass") %>
+          <% when "Sidewinder Saison" %>
+            <%= image_tag("short_glass_blonde.png", class: "glass") %>
+          <% when "Pegasus Pale Ale" %>
+            <%= image_tag("tall_glass_orange.png", class: "glass") %>
+          <% else %>
+            <%= image_tag("tall_glass_blonde.png", class: "glass") %>
+          <% end %>
         </div>
         <div class="name">
           <%= brew.name %>
@@ -77,10 +91,12 @@
     }
 
     function addBrew() {
-      var brew = $(this).parent();
+      var brew = $(this).parent(),
+          image = brew.find('.glass');
 
       $('.brew-queue .queue').append(
         '<div class="brew ' + brew.data('slug') + '" style="height: 0; padding-bottom: 0; padding-top: 0;">'
+        + '<img src="' + image.attr('src') + '">'
         + brew.data('name')
         + '<a href="#" class="remove-from-queue"><i class="fa fa-minus-circle"></i></a>'
         + '<small class="month"></small>' +
