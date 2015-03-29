@@ -1,63 +1,126 @@
 <div class="available-brews">
-  <% @brews.each do |brew| %>
-    <div class="brew <%= brew.slug %>" data-name="<%= brew.name %>" data-slug="<%= brew.slug %>">
-      <div class="name">
-        <%= brew.name %>
-      </div>
-      <div class="details">
-        <%= link_to "More Details", "#" %>
-      </div>
-      <a href="#" class="add-to-queue">
-        Add to Queue
-      </a>
+  <div class="controls">
+    <div class="sort">
+      Sort by:
+      <span>
+        Most Popular
+        <i class="fa fa-caret-down"></i>
+      </span>
     </div>
-  <% end %>
+
+    <div class="filter">
+      Filter by:
+      <span>
+        Show All
+        <i class="fa fa-caret-down"></i>
+      </span>
+    </div>
+  </div>
+
+  <div class="brews">
+    <% @brews.each do |brew| %>
+      <div class="brew <%= brew.slug %>" data-name="<%= brew.name %>" data-slug="<%= brew.slug %>">
+        <div class="brew-logo">
+          <i class="fa fa-beer"></i>
+        </div>
+        <div class="name">
+          <%= brew.name %>
+        </div>
+        <div class="details">
+          <%= link_to "More Details", "#" %>
+        </div>
+        <a href="#" class="add-to-queue">
+          <i class="fa fa-plus-circle"></i>
+          Add to Queue
+        </a>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 <div class="brew-queue">
-  <div class="getting-started">
-    Get started by adding brews you’d like to receive for the next couple months.
-  </div>
+  <h2>Brew Queue</h2>
 
-  <div class="empty-queue">
-    If your queue is ever empty, don’t worry! We’ll select a brew for you
-    that we know you’ll love based on your previous ratings.
+  <div class="queue">
+    <i class="fa fa-beer background"></i>
+    <div class="placeholder">
+      <div class="brew">
+        <div class="name">
+          Add brews to your queue or receive
+          one of our popular brews we know you’ll love.
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 <% content_for :scripts do %>
   <script>
+    var months = [
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December'
+    ];
 
-    function addBrew () {
+    function updateQueue() {
+      var monthElements = $('.brew-queue .month');
+
+      for (var i = 0; monthElements.length > i; i++) {
+        $(monthElements[i]).text(months[i]);
+      }
+    }
+
+    function addBrew() {
       var brew = $(this).parent();
 
-      $('.getting-started').remove();
-      $('.brew-queue').prepend(
-        '<div class="brew ' + brew.data('slug') + '">'
+      $('.brew-queue .queue').append(
+        '<div class="brew ' + brew.data('slug') + '" style="height: 0; padding-bottom: 0; padding-top: 0;">'
         + brew.data('name')
-        + '<a href="#" class="remove-from-queue">Remove from Queue</a>' +
+        + '<a href="#" class="remove-from-queue"><i class="fa fa-minus-circle"></i></a>'
+        + '<small class="month"></small>' +
         '</div>'
       );
 
-      $('.brew-queue .' + brew.data('slug')).click(removeBrew);
+      $('.brew-queue .queue .brew').animate({
+        height:        '60px',
+        paddingBottom: '10px',
+        paddingTop:    '10px'
+      }, 300, 'swing');
 
+      $('.brew-queue .remove-from-queue').click(removeBrew);
+
+      updateQueue();
       return false;
     }
 
-    function removeBrew () {
-      var queue = $('.brew-queue'),
-          self = $(this);
+    function removeBrew() {
+      var brew = $(this).parent('.brew');
 
-      self.remove();
+      brew.animate({
+        height:        0,
+        paddingBottom: 0,
+        paddingTop:    0
+      }, 350, 'swing', function() {
+        brew.remove();
+        updateQueue();
 
-      if (queue.find('.brew') === 0) {
-        self.prepend('<div class="getting-started">hi</div>');
-      }
+        if ($('.brew-queue .brew').length === 1) {
+          $('.placeholder').show();
+        }
+      });
 
       return false;
     }
 
     $('.add-to-queue').click(addBrew);
-    $('.remove-from-queue').click(removeBrew);
+    $('.details').click(function() {
+      return false;
+    });
   </script>
 <% end %>

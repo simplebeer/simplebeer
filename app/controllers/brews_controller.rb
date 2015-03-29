@@ -12,7 +12,6 @@ private
     @brew_names ||= [
       "Impulse IPA",
       "Boardwalk Bullet Brown Ale",
-      "Steamin' Demon Summer Wheat",
       "Oblivion Oatmeal Stout",
       "Sidewinder Saison",
       "Pegasus Pale Ale",

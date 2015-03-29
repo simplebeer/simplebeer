@@ -92,6 +92,20 @@ body.home.index {
             width: 30%;
           }
         }
+
+        @include media(max-width 400px) {
+          margin-bottom: -1em;
+
+          input[type=email] {
+            display: block;
+            margin-bottom: 0.7em;
+            width: 100%;
+          }
+
+          input[type=submit] {
+            width: 60%;
+          }
+        }
       }
 
       .response a {

@@ -2,7 +2,6 @@ class HomeController < ApplicationController
   skip_authorization_check
 
   def index
-    @title = "Welcome"
   end
 
   def privacy
