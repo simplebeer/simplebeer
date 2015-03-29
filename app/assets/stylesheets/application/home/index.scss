@@ -6,33 +6,17 @@ body.home.index {
     background-size: cover;
     text-align: center;
 
-    .overlay {
-      background-color: rgba(0, 0, 0, 0.05);
-      min-height: 500px;
-      padding: 75px 0;
-    }
-
     .container {
       @include outer-container;
+      margin: 0 auto;
+      max-width: 670px;
+      min-height: 500px;
+      padding: 75px 20px;
 
       h1 {
-        @include span-columns(6);
-        @include omega;
-
         font-size: 50px;
 
-        @include media($desktop) {
-          @include shift(3);
-        }
-
-        @include media($tablet) {
-          @include shift(2);
-        }
-
         @include media($mobile) {
-          @include span-columns(4);
-          @include omega;
-
           font-size: 30px;
         }
 
@@ -42,86 +26,29 @@ body.home.index {
       }
 
       p {
-        @include span-columns(8);
-        @include omega;
-
-        @include media($desktop) {
-          @include shift(2);
-        }
-
-        @include media($tablet) {
-          @include shift(2);
-        }
-
-        @include media($mobile) {
-          @include span-columns(4);
-
-          padding: 20px;
-        }
-
         font-size: 22px;
         line-height: 44px;
+        margin-bottom: 2em;
         text-align: left;
       }
-    }
-  }
 
-  main {
-    @include outer-container;
-
-    padding: 2em 1em;
-
-    section.sign-up {
-      @include span-columns(8);
-      @include omega;
-
-      @include media($desktop) {
-        @include shift(2);
+      h3 {
+        font-size: 26px;
+        font-weight: bold;
       }
-
-      @include media($tablet) {
-        @include shift(2);
-      }
-
-      @include media($mobile) {
-        @include span-columns(4);
-      }
-
-      margin-bottom: 75px;
-      margin-top: 50px;
-      text-align: center;
 
       #mc_embed_signup {
-        @include span-columns(12);
-        @include omega;
-
         input[type=email] {
           color: $gray;
           display: inline-block;
           margin: 0;
-          width: 70%;
-
-          @include media($mobile) {
-            width: 60%;
-          }
-
-          @include media($tablet) {
-            width: 60%;
-          }
+          width: 80%;
         }
 
         input[type=submit] {
           display: inline-block;
           margin-left: -5px;
           width: 20%;
-
-          @include media($mobile) {
-            width: 30%;
-          }
-
-          @include media($tablet) {
-            width: 30%;
-          }
         }
 
         input {
@@ -129,35 +56,20 @@ body.home.index {
           box-shadow: none;
           padding: 12px;
         }
-      }
-    }
-
-    section.starter-kit {
-      @include outer-container;
-      @include shift(2);
-      @include span-columns(8);
-      @include omega;
-
-      @include media($mobile) {
-        @include shift(0);
-        @include span-columns(4);
-      }
-
-      ul {
-        @include span-columns(6);
 
         @include media($mobile) {
-          width: 100%;
+          input[type=email] {
+            width: 70%;
+          }
+
+          input[type=submit] {
+            width: 30%;
+          }
         }
       }
 
-      .box {
-        @include span-columns(6);
-
-        @include media($mobile) {
-          @include span-columns(2);
-          @include shift(1);
-        }
+      .response a {
+        color: #fff;
       }
     }
   }
@@ -172,5 +84,45 @@ body.home.index {
     @include button;
     position: relative;
     top: -2px;
+  }
+}
+
+body.home.index .kits {
+  @include outer-container;
+  max-width: 670px;
+  padding: 40px 20px;
+
+  h2 {
+    font-size: 34px;
+    font-weight: bold;
+    margin-bottom: 1em;
+  }
+
+  .starter-kit,
+  .monthly-kit {
+    @include span-columns(6);
+
+    @include media($mobile) {
+      float: none;
+      margin-right: 0;
+      width: 100%;
+    }
+
+    margin-bottom: 2em;
+
+    h3 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 1em;
+    }
+
+    img {
+      margin-bottom: 1em;
+      max-height: 180px;
+    }
+  }
+
+  .monthly-kit {
+    @include omega;
   }
 }
